@@ -1,0 +1,66 @@
+<RegisterScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing: 20
+        canvas.before:
+            Color:
+                rgba: 1, 1, 1, 1  # White background for a clean look
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            text: 'Create Account'
+            font_size: 28
+            color: (0.1, 0.1, 0.1, 1)  # Dark gray text for contrast
+            bold: True
+            size_hint_y: 0.2
+            halign: 'center'
+            valign: 'middle'
+
+        TextInput:
+            hint_text: 'Username'
+            size_hint_y: 0.1
+            font_size: 18
+            foreground_color: (0.2, 0.2, 0.2, 1)  # Darker input text color
+            background_normal: ''
+            background_color: (0.9, 0.9, 0.9, 1)  # Light gray background for text input
+            padding: [10, 10]
+
+        TextInput:
+            hint_text: 'Email'
+            size_hint_y: 0.1
+            font_size: 18
+            foreground_color: (0.2, 0.2, 0.2, 1)
+            background_normal: ''
+            background_color: (0.9, 0.9, 0.9, 1)
+            padding: [10, 10]
+
+        TextInput:
+            hint_text: 'Password'
+            password: True
+            size_hint_y: 0.1
+            font_size: 18
+            foreground_color: (0.2, 0.2, 0.2, 1)
+            background_normal: ''
+            background_color: (0.9, 0.9, 0.9, 1)
+            padding: [10, 10]
+
+        Button:
+            text: 'Daftar'
+            size_hint_y: 0.15
+            background_normal: ''
+            background_color: (0.2, 0.6, 0.2, 1)  # Green register button for action
+            color: (1, 1, 1, 1)  # White text for contrast
+            font_size: 18
+            on_release: app.root.current = 'home'
+
+        Button:
+            text: 'Back to Home'
+            size_hint_y: 0.15
+            background_normal: ''
+            background_color: (0.8, 0.2, 0.2, 1)  # Red button for navigation
+            color: (1, 1, 1, 1)
+            font_size: 18
+            on_release: app.root.current = 'home'

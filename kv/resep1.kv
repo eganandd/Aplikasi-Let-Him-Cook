@@ -1,0 +1,84 @@
+<Resep1Screen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 10
+        spacing: 10
+        canvas.before:
+            Color:
+                rgba: (0.95, 0.95, 0.95, 1)  # Light background color
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        # Header with Title
+        Label:
+            text: 'Resep Nasi Goreng Rempah'
+            font_size: 28
+            bold: True
+            color: (0.1, 0.5, 0.2, 1)  # Dark green color
+            size_hint_y: None
+            height: '60dp'
+            halign: 'center'  # Center-align the text
+            text_size: self.width, None  # Allow wrapping
+
+        # Recipe Image (reduced height)
+        Image:
+            source: 'img/nasi_goreng.png'
+            size_hint: (1, None)
+            height: '180dp'  # Reduced image height
+            allow_stretch: True
+            keep_ratio: True
+
+        # Scrollable Content
+        ScrollView:
+            do_scroll_y: True
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: self.minimum_height
+                padding: 10
+                spacing: 10
+
+                # Ingredients Section
+                Label:
+                    text: 'Bahan-Bahan:'
+                    font_size: 22
+                    bold: True
+                    color: (0.1, 0.5, 0.2, 1)  # Dark green color
+                    size_hint_y: None
+                    height: '40dp'
+
+                Label:
+                    text: '1. Nasi putih\n2. Telur\n3. Bawang putih\n'
+                    font_size: 16
+                    color: (0.2, 0.2, 0.2, 1)
+                    size_hint_y: None
+                    height: self.texture_size[1]  # Dynamically adjust height
+
+                # Steps Section
+                Label:
+                    text: 'Cara Memasak:'
+                    font_size: 22
+                    bold: True
+                    color: (0.1, 0.5, 0.2, 1)  # Dark green color
+                    size_hint_y: None
+                    height: '40dp'
+
+                Label:
+                    text: '1. Tumis bawang.\n2. Tambahkan telur.\n3. Masukkan nasi.\n'
+                    font_size: 16
+                    color: (0.2, 0.2, 0.2, 1)
+                    size_hint_y: None
+                    height: self.texture_size[1]  # Dynamically adjust height
+
+        # Footer Button to go back to recipe list
+        Button:
+            text: 'Kembali ke daftar resep'
+            size_hint_y: None
+            height: '50dp'
+            background_color: (0.2, 0.6, 0.2, 1)
+            color: (1, 1, 1, 1)
+            font_size: 18  # Increased font size
+            bold: True  # Make button text bold
+            on_release: app.root.current = 'resep'

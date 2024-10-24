@@ -1,0 +1,71 @@
+<Artikel1Screen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 10
+        spacing: 10
+        canvas.before:
+            Color:
+                rgba: (0.95, 0.95, 0.95, 1)  # Light background color
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        # Header with Title
+        Label:
+            text: '10 Olahan Telur Agar Tidak Bosan Untuk Masakan Sehari-hari'
+            font_size: 28
+            bold: True
+            color: (0.1, 0.5, 0.2, 1)  # Dark green color
+            size_hint_y: None
+            height: '60dp'
+            halign: 'center'  # Center-align the text
+            text_size: self.width, None  # Allow wrapping
+
+        # Article Image
+        Image:
+            source: 'img/telur.png'  # Replace with your article image path
+            size_hint: (1, None)
+            height: '250dp'  # Adjust image height as needed
+            allow_stretch: True
+            keep_ratio: True
+
+        # Scrollable Content
+        ScrollView:
+            do_scroll_y: True
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: self.minimum_height
+                padding: 10
+                spacing: 10
+
+                # Article Content
+                Label:
+                    text: "Berikut adalah beberapa olahan telur yang dapat membuat menu masakan Anda menjadi lebih variatif. Telur adalah bahan makanan yang mudah didapat dan kaya akan nutrisi."
+                    font_size: 16
+                    color: (0.2, 0.2, 0.2, 1)
+                    size_hint_y: None
+                    height: self.texture_size[1]  # Dynamically adjust height
+                    halign: 'center'  # Center align text
+                    text_size: self.width, None  # Allow wrapping
+
+                Label:
+                    text: "1. Telur Orak-Arik\n2. Telur Rebus\n3. Telur Dadar\n4. Telur Ceplok\n5. Telur Penyet\n6. Telur Bakar\n7. Roti Isi Telur\n8. Pasta Telur\n9. Salad Telur\n10. Sup Telur\n"
+                    font_size: 16
+                    color: (0.2, 0.2, 0.2, 1)
+                    size_hint_y: None
+                    height: self.texture_size[1]  # Dynamically adjust height
+                    halign: 'center'  # Center align text
+                    text_size: self.width, None  # Allow wrapping
+
+        # Footer Button to go back to article list
+        Button:
+            text: 'Kembali ke daftar artikel'
+            size_hint_y: None
+            height: '50dp'
+            background_color: (0.2, 0.6, 0.2, 1)
+            color: (1, 1, 1, 1)
+            font_size: 18  # Increased font size
+            bold: True  # Make button text bold
+            on_release: app.root.current = 'artikel'  # Go back to ArtikelScreen

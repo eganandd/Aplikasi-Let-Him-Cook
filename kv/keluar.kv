@@ -1,0 +1,92 @@
+<KeluarScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 10
+        spacing: 10
+        canvas.before:
+            Color:
+                rgba: (0.3, 0.6, 0.8, 1)  # Light blue background color
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        # Header
+        BoxLayout:
+            size_hint_y: None
+            height: 50
+            Label:
+                text: 'Konfirmasi Keluar'
+                font_size: 24
+                color: (1, 1, 1, 1)  # White color for the title
+                halign: 'center'
+                valign: 'middle'
+                size_hint_x: 1
+                bold: True
+
+        # Confirmation Message
+        Label:
+            text: 'Apakah Anda yakin ingin keluar?'
+            font_size: 20
+            color: (1, 1, 1, 1)
+            halign: 'center'
+            valign: 'middle'
+            size_hint_y: None
+            height: '60dp'
+
+        # Buttons
+        BoxLayout:
+            orientation: 'horizontal'
+            spacing: 20
+            size_hint_y: None
+            height: 60
+
+            Button:
+                text: 'Ya'
+                size_hint_x: 1
+                background_color: (0.8, 0.5, 0.2, 1)
+                color: (1, 1, 1, 1)
+                on_release: app.root.get_screen('keluar').confirm_exit()  # Call the confirm_exit method
+
+            Button:
+                text: 'Tidak'
+                size_hint_x: 1
+                background_color: (0.8, 0.3, 0.3, 1)
+                color: (1, 1, 1, 1)
+                on_release: app.root.current = 'profil'  # Return to the Profil screen
+
+        # Footer (Bottom Navigation Bar)
+        BoxLayout:
+            size_hint_y: None
+            height: 60
+            spacing: 10
+            canvas.before:
+                Color:
+                    rgba: (0.95, 0.95, 0.95, 1)  # Light gray background for footer
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            Button:
+                text: 'Artikel'
+                on_release: app.root.current = 'artikel'
+                size_hint_x: 1
+                background_color: (0.8, 0.3, 0.3, 1)  # Red for Articles
+                color: (1, 1, 1, 1)  # White text
+            Button:
+                text: 'Beranda'
+                on_release: app.root.current = 'beranda'
+                size_hint_x: 1
+                background_color: (0.3, 0.6, 0.3, 1)  # Green for Home
+                color: (1, 1, 1, 1)  # White text
+            Button:
+                text: 'Resep'
+                on_release: app.root.current = 'resep'
+                size_hint_x: 1
+                background_color: (0.3, 0.3, 0.8, 1)  # Blue for Recipes
+                color: (1, 1, 1, 1)  # White text
+            Button:
+                text: 'Profil'
+                on_release: app.root.current = 'profil'
+                size_hint_x: 1
+                background_color: (0.8, 0.8, 0.3, 1)  # Yellow for Profile
+                color: (1, 1, 1, 1)  # White text
