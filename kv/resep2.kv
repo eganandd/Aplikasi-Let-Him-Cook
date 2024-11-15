@@ -1,0 +1,84 @@
+# Resep2Screen.kv
+
+<Resep2Screen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 10
+        spacing: 10
+        canvas.before:
+            Color:
+                rgba: (0.95, 0.95, 0.95, 1)  # Light background color
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        # Header Title
+        Label:
+            text: "Cara Membuat Telur Dadar Tebal Gurih"
+            font_size: 28
+            bold: True
+            color: (0.9, 0.5, 0, 1)  # Orange color
+            size_hint_y: None
+            height: '60dp'
+            halign: 'center'
+            text_size: self.width, None
+
+        # Scrollable Content
+        ScrollView:
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: self.minimum_height
+                padding: 10
+                spacing: 10
+
+                # Recipe Image
+                Image:
+                    source: 'img/telur_dadar.png'  # Ensure this image exists
+                    size_hint: (1, None)
+                    height: '180dp'
+                    allow_stretch: True
+                    keep_ratio: True
+
+                # Ingredients Section
+                Label:
+                    text: "Bahan-Bahan:"
+                    font_size: 22
+                    bold: True
+                    color: (0.9, 0.5, 0, 1)  # Orange color for consistency
+                    size_hint_y: None
+                    height: '40dp'
+
+                Label:
+                    text: "- 3 butir telur\n- Garam dan merica\n- Daun bawang, iris tipis"
+                    font_size: 16
+                    color: (0.2, 0.2, 0.2, 1)  # Dark grey for readability
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+                # Instructions Section
+                Label:
+                    text: "Cara Membuat:"
+                    font_size: 22
+                    bold: True
+                    color: (0.9, 0.5, 0, 1)
+                    size_hint_y: None
+                    height: '40dp'
+
+                Label:
+                    text: "1. Kocok telur dengan garam, merica, dan daun bawang.\n2. Panaskan minyak di wajan.\n3. Masak telur dengan api kecil hingga matang merata."
+                    font_size: 16
+                    color: (0.2, 0.2, 0.2, 1)
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+        # Footer Button to go back to recipe list
+        Button:
+            text: "Kembali ke daftar resep"
+            size_hint_y: None
+            height: '50dp'
+            background_color: (0.9, 0.5, 0, 1)  # Orange background
+            color: (1, 1, 1, 1)
+            font_size: 18
+            bold: True
+            on_release: app.root.current = 'resep'

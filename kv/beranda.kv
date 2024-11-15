@@ -15,11 +15,6 @@
             size_hint_y: None
             height: 50
             spacing: 10
-            Label:
-                text: 'Favorit'
-                font_size: 24
-                size_hint: (None, None)
-                size: (50, 50)
             Image:
                 source: 'img/logo.png'  # Path to your logo image
                 size_hint: (None, None)
@@ -39,29 +34,13 @@
                 size_hint: (None, None)
                 size: (50, 50)
 
-        # Search Bar
-        BoxLayout:
-            size_hint_y: None
-            height: 50
-            spacing: 10
-            TextInput:
-                hint_text: 'Mau Masak Apa Hari Ini?'
-                size_hint_x: 0.8
-                background_normal: ''
-                background_color: (0.95, 0.95, 0.95, 1)  # Light gray for search input
-            Button:
-                text: 'Cari'
-                size_hint_x: 0.2
-                background_color: (0.2, 0.6, 0.2, 1)  # Green color for search button
-                color: (1, 1, 1, 1)  # White text
-
         # Categories Section
         BoxLayout:
             orientation: 'vertical'
             size_hint_y: None
             height: self.minimum_height + 10
             Label:
-                text: 'Telusuri Berdasarkan'
+                text: 'Kategori'
                 size_hint_y: None
                 height: 30
                 font_size: 20
@@ -74,72 +53,72 @@
                 padding: 10
 
                 # Category: Dessert
-                Button:
+                BoxLayout:
+                    orientation: 'vertical'
                     size_hint: (1, None)
-                    height: '150dp'  # Adjusted size for better alignment
-                    on_release: app.show_category('dessert')
-                    BoxLayout:
-                        orientation: 'vertical'
-                        padding: [5, 10, 5, 10]
-                        spacing: 10
-                        Label:
-                            text: 'Dessert'
-                            size_hint_y: 1
-                            halign: 'center'
-                            valign: 'middle'
-                            color: (0, 0, 0, 1)
-                            text_size: self.size  # Centers the text
+                    height: '180dp'  # Adjusted height to fit image and title
+                    Button:
+                        size_hint_y: 0.8  # Allocates most space for the image
+                        background_normal: 'img/dessert.png'  # Path to dessert image
+                        background_down: 'img/dessert.png'
+                        on_release: app.show_category('dessert')
+                    Label:
+                        text: 'Dessert'
+                        size_hint_y: 0.2
+                        halign: 'center'
+                        valign: 'middle'
+                        color: (0, 0, 0, 1)
 
                 # Category: Masakan Tradisional
-                Button:
+                BoxLayout:
+                    orientation: 'vertical'
                     size_hint: (1, None)
-                    height: '150dp'
-                    on_release: app.show_category('masakan_tradisional')
-                    BoxLayout:
-                        orientation: 'vertical'
-                        padding: [5, 10, 5, 10]
-                        spacing: 10
-                        Label:
-                            text: 'Masakan Tradisional'
-                            size_hint_y: 1
-                            halign: 'center'
-                            valign: 'middle'
-                            color: (0, 0, 0, 1)
-                            text_size: self.size
+                    height: '180dp'
+                    Button:
+                        size_hint_y: 0.8
+                        background_normal: 'img/masakan_tradisional.png'  # Path to traditional food image
+                        background_down: 'img/masakan_tradisional.png'
+                        on_release: app.show_category('masakan_tradisional')
+                    Label:
+                        text: 'Masakan Tradisional'
+                        size_hint_y: 0.2
+                        halign: 'center'
+                        valign: 'middle'
+                        color: (0, 0, 0, 1)
 
                 # Category: Resep Daging
-                Button:
+                BoxLayout:
+                    orientation: 'vertical'
                     size_hint: (1, None)
-                    height: '150dp'
-                    on_release: app.show_category('resep_daging')
-                    BoxLayout:
-                        orientation: 'vertical'
-                        padding: [5, 10, 5, 10]
-                        spacing: 10
-                        Label:
-                            text: 'Resep Daging'
-                            size_hint_y: 1
-                            halign: 'center'
-                            valign: 'middle'
-                            color: (0, 0, 0, 1)
-                            text_size: self.size
+                    height: '180dp'
+                    Button:
+                        size_hint_y: 0.8
+                        background_normal: 'img/resep_daging.png'  # Path to meat recipes image
+                        background_down: 'img/resep_daging.png'
+                        on_release: app.show_category('resep_daging')
+                    Label:
+                        text: 'Resep Daging'
+                        size_hint_y: 0.2
+                        halign: 'center'
+                        valign: 'middle'
+                        color: (0, 0, 0, 1)
 
                 # Category: Resep Ayam
-                Button:
+                BoxLayout:
+                    orientation: 'vertical'
                     size_hint: (1, None)
-                    height: '150dp'
-                    on_release: app.show_category('resep_ayam')
-                    BoxLayout:
-                        orientation: 'vertical'
-                        padding: [5, 10, 5, 10]
-                        spacing: 10
-                        Label:
-                            text: 'Resep Ayam'
-                            size_hint_y: 1
-                            halign: 'center'
-                            valign: 'middle'
-                            color: (0, 0, 0, 1)
-                            text_size: self.size
+                    height: '180dp'
+                    Button:
+                        size_hint_y: 0.8
+                        background_normal: 'img/resep_ayam.png'  # Path to chicken recipes image
+                        background_down: 'img/resep_ayam.png'
+                        on_release: app.show_category('resep_ayam')
+                    Label:
+                        text: 'Resep Ayam'
+                        size_hint_y: 0.2
+                        halign: 'center'
+                        valign: 'middle'
+                        color: (0, 0, 0, 1)
 
         # Footer (Bottom Navigation Bar)
         BoxLayout:
@@ -159,7 +138,6 @@
                 size_hint_x: 1
                 background_color: (0.8, 0.3, 0.3, 1)  # Red for Articles
                 color: (1, 1, 1, 1)  # White text
-                on_release: app.root.current = 'artikel'
             Button:
                 text: 'Beranda'
                 on_release: app.root.current = 'beranda'

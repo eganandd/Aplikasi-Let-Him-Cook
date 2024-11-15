@@ -1,0 +1,50 @@
+<FavoritScreen>:
+    name: 'favorit'
+    
+    BoxLayout:
+        orientation: 'vertical'
+        
+        # Header with segmented control
+        BoxLayout:
+            size_hint_y: 0.15
+            padding: 10
+            spacing: 10
+            
+            Button:
+                text: 'Semua'
+                font_size: 20
+                bold: True
+                on_release: root.show_favorites('all')
+                
+            Button:
+                text: 'Artikel'
+                font_size: 20
+                bold: True
+                on_release: root.show_favorites('articles')
+                
+            Button:
+                text: 'Resep'
+                font_size: 20
+                bold: True
+                on_release: root.show_favorites('recipes')
+
+        # List of Favorites
+        ScrollView:
+            BoxLayout:
+                id: favorites_box
+                orientation: 'vertical'
+                padding: 10
+                spacing: 10
+                size_hint_y: None
+                height: self.minimum_height  # Adjust height to fit contents
+
+        # Back button to navigate to Profil screen
+        Button:
+            text: 'Kembali ke Profil'
+            size_hint_y: 0.15
+            background_normal: ''
+            background_color: 0.8, 0.2, 0.2, 1  # Red button color
+            color: 1, 1, 1, 1  # White text
+            font_size: 18
+            bold: True
+            on_release: app.root.current = 'profil'  # Navigate back to Profil screen

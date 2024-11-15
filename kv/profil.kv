@@ -1,125 +1,122 @@
 <ProfilScreen>:
+    name: 'profil'
     BoxLayout:
         orientation: 'vertical'
-        padding: 10
-        spacing: 10
-        canvas.before:
-            Color:
-                rgba: (0.3, 0.6, 0.8, 1)  # Light blue background color
-            Rectangle:
-                pos: self.pos
-                size: self.size
-
-        # Header
-        BoxLayout:
-            size_hint_y: None
-            height: 50
-            Label:
-                text: 'Profil'
-                font_size: 24
-                color: (1, 1, 1, 1)  # White color for the title
-                halign: 'center'
-                valign: 'middle'
-                size_hint_x: 1
-                bold: True
-
-        # Profile Info
+        
+        # Isi Profil
         BoxLayout:
             orientation: 'vertical'
-            padding: 10
-            spacing: 10
-
-            # Profile Image with rounded corners
-            Image:
-                source: 'img/profile.png'  # Path to your profile image
-                size_hint: (1, None)
-                height: '200dp'
-                allow_stretch: True
-                keep_ratio: True
-                canvas.before:
-                    RoundedRectangle:
-                        pos: self.pos
-                        size: self.size
-                        radius: [20]  # Rounded corners
-
-            # User Information
-            BoxLayout:
-                orientation: 'vertical'
-                size_hint_y: None
-                height: '100dp'
-                padding: [10, 0]
-                spacing: 5
-
-                Label:
-                    text: 'Nama Pengguna: User'
-                    font_size: 20
-                    color: (1, 1, 1, 1)
-                    halign: 'center'
-                    valign: 'middle'
-                    bold: True
-
-                Label:
-                    text: 'Email: user12@gmail.com'
-                    font_size: 18
-                    color: (1, 1, 1, 1)
-                    halign: 'center'
-                    valign: 'middle'
-
-        # Buttons
-        BoxLayout:
-            orientation: 'horizontal'
-            spacing: 20
-            size_hint_y: None
-            height: 60
-
-            Button:
-                text: 'Ubah Profil'
-                size_hint_x: 1
-                background_color: (0.8, 0.5, 0.2, 1)
-                color: (1, 1, 1, 1)
-                border_radius: [20]  # Rounded button corners
-
-            Button:
-                text: 'Keluar'
-                size_hint_x: 1
-                background_color: (0.8, 0.3, 0.3, 1)
-                color: (1, 1, 1, 1)
-                border_radius: [20]  # Rounded button corners
-                on_release: app.root.current = 'keluar'  # Navigate to KeluarScreen
-
-        # Footer (Bottom Navigation Bar)
-        BoxLayout:
-            size_hint_y: None
-            height: 60
-            spacing: 10
+            padding: 20
+            spacing: 15
             canvas.before:
                 Color:
-                    rgba: (0.95, 0.95, 0.95, 1)  # Light gray background for footer
+                    rgba: 0.95, 0.95, 0.95, 1  # Light gray background
                 Rectangle:
                     pos: self.pos
                     size: self.size
 
+            # Header Label
+            Label:
+                text: 'Profil Saya'
+                font_size: 28
+                color: 0.2, 0.5, 0.8, 1  # Blue text color
+                bold: True
+                size_hint_y: 0.15
+                halign: 'center'
+                valign: 'middle'
+                text_size: self.width, None
+
+            # Profile Picture
+            Image:
+                id: profile_pic
+                source: 'img/profile.png'  # Default profile picture
+                size_hint: None, None
+                size: 150, 150  # Make the profile picture size consistent
+                allow_stretch: True
+                keep_ratio: True
+                pos_hint: {'center_x': 0.5}
+                canvas.before:
+                    Color:
+                        rgba: 0.8, 0.8, 0.8, 1  # Circle background for image
+                    Ellipse:
+                        pos: self.pos
+                        size: self.size
+
+            # Username Display
+            Label:
+                text: 'Username: Gegi'
+                font_size: 18
+                color: 0.3, 0.3, 0.3, 1
+                bold: True
+                size_hint_y: 0.1
+                halign: 'center'
+                valign: 'middle'
+                text_size: self.width, None
+
+            # Email Display
+            Label:
+                text: 'Email: gegi10@gmail.com'
+                font_size: 18
+                color: 0.3, 0.3, 0.3, 1
+                bold: True
+                size_hint_y: 0.1
+                halign: 'center'
+                valign: 'middle'
+                text_size: self.width, None
+
+            Button:
+                text: 'Favorit'
+                size_hint_y: 0.15
+                background_normal: ''
+                background_color: 0.2, 0.6, 0.8, 1
+                color: 1, 1, 1, 1
+                font_size: 18
+                bold: True
+                pos_hint: {'center_x': 0.5}
+                on_release: app.root.current = 'favorit' 
+
+            # Logout Button
+            Button:
+                text: 'Keluar'
+                size_hint_y: 0.15
+                background_normal: ''
+                background_color: 0.8, 0.2, 0.2, 1  # Red color for the logout button
+                color: 1, 1, 1, 1  # White text
+                font_size: 18
+                bold: True
+                pos_hint: {'center_x': 0.5}
+                on_release: app.logout()  # Call function to log out
+
+        # Navbar di bagian bawah
+        BoxLayout:
+            size_hint_y: 0.1
+            spacing: 10
+            padding: [10, 0]
+
             Button:
                 text: 'Artikel'
-                on_release: app.root.current = 'artikel'
-                size_hint_x: 1
-                background_color: (0.8, 0.3, 0.3, 1)  # Red for Articles
-                color: (1, 1, 1, 1)  # White text
+                background_normal: ''
+                background_color: 0.8, 0.3, 0.3, 1  
+                color: 1, 1, 1, 1
+                on_release: app.root.current = 'artikel'  # Navigate to ArtikelScreen
+
             Button:
                 text: 'Beranda'
-                on_release: app.root.current = 'beranda'
-                size_hint_x: 1
-                background_color: (0.3, 0.6, 0.3, 1)  # Green for Home
-                color: (1, 1, 1, 1)  # White text
+                background_normal: ''
+                background_color: 0.3, 0.6, 0.3, 1
+                color: 1, 1, 1, 1
+                on_release: app.root.current = 'beranda'  # Navigate to BerandaScreen
+
             Button:
                 text: 'Resep'
-                on_release: app.root.current = 'resep'
-                size_hint_x: 1
-                background_color: (0.3, 0.3, 0.8, 1)  # Blue for Recipes
-                color: (1, 1, 1, 1)  # White text
+                background_normal: ''
+                background_color: 0.3, 0.3, 0.8, 1
+                color: 1, 1, 1, 1
+                on_release: app.root.current = 'resep'  # Navigate to ResepScreen
+
             Button:
                 text: 'Profil'
-                on_release: app.root.current = 'profil'
-                size_hint_x: 1
-                background_color: (0.8, 0.8, 0.3, 1)  # Yellow for Profile
-                color: (1, 1, 1, 1)  # White text
+                background_normal: ''
+                background_color: 0.8, 0.8, 0.3, 1
+                color: 1, 1, 1, 1
+                on_release: app.root.current = 'profil'  # Navigate to ProfilScreen
